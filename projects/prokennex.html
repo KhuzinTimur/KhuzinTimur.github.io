@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prokennex — website redesign · Timur Khuzin</title>
+  <meta name="description" content="Кейс: редизайн сайта производителя теннисных ракеток Prokennex. Сетка, композиция, визуальная иерархия, анимация.">
+
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+  <link rel="stylesheet" href="../css/reveal.css">
+</head>
+<body style="--scene-accent: #F5573B;">
+
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <div class="site-header-wrap">
+    <div class="container">
+      <header class="site-header">
+        <a href="../index.html" class="logo">
+          <span class="logo-name">Timur Khuzin</span>
+          <span class="logo-role" data-i18n="logo.role"></span>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-dropdown">
+              <a href="../index.html#projects" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <span data-i18n="nav.projects"></span>
+                <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li style="--item-accent: #FF6B35;"><a href="ozon.html" data-i18n="nav.project.ozon"></a></li>
+                <li style="--item-accent: #4A9EFF;"><a href="gitverse.html" data-i18n="nav.project.gitverse"></a></li>
+                <li style="--item-accent: #4ADE80;"><a href="okkta.html" data-i18n="nav.project.okkta"></a></li>
+                <li style="--item-accent: #F5573B;"><a href="prokennex.html" data-i18n="nav.project.prokennex"></a></li>
+                <li style="--item-accent: #8B7CF6;"><a href="elevateu.html" data-i18n="nav.project.elevateu"></a></li>
+              </ul>
+            </li>
+            <li class="nav-dropdown">
+              <a href="../about.html" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <span data-i18n="nav.about"></span>
+                <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li style="--item-accent: #7C3AED;"><a href="../about.html" data-i18n="nav.about"></a></li>
+                <li style="--item-accent: #7C3AED;"><a href="../about.html#cv" data-i18n="nav.about.cv"></a></li>
+              </ul>
+            </li>
+            <li><a href="../skills.html" data-i18n="nav.skills"></a></li>
+            <li><a href="../index.html#contact" data-i18n="nav.contacts"></a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="nav-burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="header-controls">
+          <div class="control-group" role="group" data-i18n-aria-label="lang.toggle.label">
+            <button class="control-segment" data-lang-set="ru">RU</button>
+            <button class="control-segment" data-lang-set="en">EN</button>
+          </div>
+
+          <button class="theme-toggle" data-theme-toggle data-i18n-aria-label="theme.toggle.label">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <!-- ================= HERO ================= -->
+      <section class="project-page-hero">
+        <div class="project-hero-bg" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#F5573B"/>
+            <ellipse cx="20" cy="20" rx="11" ry="14" stroke="white" stroke-width="2.2" fill="none"/>
+            <path d="M13 13 L27 27 M27 13 L13 27" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <span class="project-page-tag" data-i18n="prokennex.tag"></span>
+        <h1 data-i18n="prokennex.title"></h1>
+        <p class="project-page-subtitle" data-i18n="prokennex.subtitle"></p>
+      </section>
+
+      <!-- ================= META ================= -->
+      <div class="project-page-meta">
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.role"></p>
+          <p data-i18n="prokennex.meta.role"></p>
+        </div>
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.duration"></p>
+          <p data-i18n="prokennex.meta.duration"></p>
+        </div>
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.tools"></p>
+          <p data-i18n="prokennex.meta.tools"></p>
+        </div>
+      </div>
+
+      <!-- ================= COVER ================= -->
+      <div class="project-page-cover reveal reveal-scale">
+        <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/prokennex-cover.jpg" alt="Prokennex cover" loading="eager" style="object-position: center;">
+      </div>
+
+      <!-- ================= CONTEXT ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.context.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.context.p1"></p>
+        <p class="reveal" data-reveal-delay="250" data-i18n="prokennex.context.p2"></p>
+      </section>
+
+      <!-- ================= AUDIT ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.audit.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.audit.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/Audit.png" alt="" loading="lazy" style="object-position: center top;">
+        </figure>
+      </section>
+
+      <!-- ================= PAINS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.pains.title"></h2>
+        <div class="pains-grid">
+          <div class="pain-card reveal" data-reveal-delay="0">
+            <span class="pain-marker">☹︎ 1</span>
+            <p data-i18n="prokennex.pains.1"></p>
+          </div>
+          <div class="pain-card reveal" data-reveal-delay="120">
+            <span class="pain-marker">☹︎ 2</span>
+            <p data-i18n="prokennex.pains.2"></p>
+          </div>
+          <div class="pain-card reveal" data-reveal-delay="240">
+            <span class="pain-marker">☹︎ 3</span>
+            <p data-i18n="prokennex.pains.3"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TASK ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.task.title"></h2>
+        <div class="task-split">
+          <div class="task-half reveal" data-reveal-delay="100">
+            <p class="eyebrow" data-i18n="prokennex.task.business.label"></p>
+            <p data-i18n="prokennex.task.business"></p>
+          </div>
+          <div class="task-half reveal" data-reveal-delay="250">
+            <p class="eyebrow" data-i18n="prokennex.task.user.label"></p>
+            <p data-i18n="prokennex.task.user"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROCESS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.process.title"></h2>
+        <div class="process-grid">
+          <div class="process-card reveal" data-reveal-delay="0">
+            <span class="process-num">01</span>
+            <p data-i18n="prokennex.process.i1"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="100">
+            <span class="process-num">02</span>
+            <p data-i18n="prokennex.process.i2"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="200">
+            <span class="process-num">03</span>
+            <p data-i18n="prokennex.process.i3"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="300">
+            <span class="process-num">04</span>
+            <p data-i18n="prokennex.process.i4"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="400">
+            <span class="process-num">05</span>
+            <p data-i18n="prokennex.process.i5"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/work.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= PERSONA ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.persona.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.persona.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/pesona.jpg" alt="" loading="lazy" style="object-position: center top;">
+        </figure>
+      </section>
+
+      <!-- ================= STRUCTURE ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.structure.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.structure.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/stucture.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= GRID & TYPOGRAPHY ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.foundation.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.foundation.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/grid.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="prokennex.foundation.cap1"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/typograffic.jpg" alt="" loading="lazy" style="object-position: center top;">
+          <figcaption data-i18n="prokennex.foundation.cap2"></figcaption>
+        </figure>
+      </section>
+
+      <!-- ================= COMPONENTS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.components.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.components.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/cads.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="prokennex.components.cap1"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/icons.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="prokennex.components.cap2"></figcaption>
+        </figure>
+      </section>
+
+            <!-- ================= DESIGN — ключевые экраны ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.design.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.design.desc"></p>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/01_main.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/01_main.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap1"></figcaption>
+          </figure>
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/02_shop.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/02_shop.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap2"></figcaption>
+          </figure>
+        </div>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/05_technology.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/05_technology.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap3"></figcaption>
+          </figure>
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/04_news.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/04_news.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap4"></figcaption>
+          </figure>
+        </div>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/03_courts.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/03_courts.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap5"></figcaption>
+          </figure>
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/06_about.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/06_about.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap6"></figcaption>
+          </figure>
+        </div>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/07_cart.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/07_cart.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap7"></figcaption>
+          </figure>
+          <figure>
+            <a href="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/08_account.jpg" target="_blank" rel="noopener">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/08_account.jpg" alt="" loading="lazy" style="object-position: center top;">
+            </a>
+            <figcaption data-i18n="prokennex.design.cap8"></figcaption>
+          </figure>
+        </div>
+      </section>
+      
+      <!-- ================= MOBILE ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.mobile.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.mobile.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/02-Prokennex/images/Phone_version.jpg" alt="" loading="lazy" style="max-width: 400px; margin-inline: auto;">
+        </figure>
+      </section>
+
+      <!-- ================= RESULTS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.results.title"></h2>
+        <div class="project-page-results">
+          <div class="project-page-result reveal" data-reveal-delay="0">
+            <span class="stat stat--neutral">12</span>
+            <span class="stat-label" data-i18n="prokennex.results.r1"></span>
+          </div>
+          <div class="project-page-result reveal" data-reveal-delay="120">
+            <span class="stat stat--neutral">4</span>
+            <span class="stat-label" data-i18n="prokennex.results.r2"></span>
+          </div>
+          <div class="project-page-result reveal" data-reveal-delay="240">
+            <span class="stat stat--neutral">+1</span>
+            <span class="stat-label" data-i18n="prokennex.results.r3"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= REFLECTION ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="prokennex.reflection.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="prokennex.reflection.p1"></p>
+        <p class="reveal" data-reveal-delay="250" data-i18n="prokennex.reflection.p2"></p>
+      </section>
+
+      <!-- ================= LINKS ================= -->
+      <section class="project-page-section reveal">
+        <div class="project-page-links">
+          <a href="https://www.figma.com/design/ggXNmmxZZ2hQAdogbsCvgC/%D0%A0%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B8%CC%86-%D0%BA%D0%B5%D0%B8%CC%86%D1%81-_-20.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%BC%D0%BE-%D1%81%D0%B0%D0%B8%CC%86%D1%82%D0%BE%D0%B2-%D0%B8-%D0%B1%D1%80%D0%B8%D1%84%D0%B8%D0%BD%D0%B3-%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82%D0%B0?node-id=0-1&t=GepcQLXGr0TOmoNT-1" target="_blank" rel="noopener noreferrer" class="project-page-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+            <span data-i18n="cta.figma"></span>
+          </a>
+          <a href="https://www.behance.net/gallery/221496639/Prokennex-website-redesign-UXUI" target="_blank" rel="noopener noreferrer" class="project-page-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+            <span data-i18n="cta.behance"></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= NAV ================= -->
+      <section class="project-page-section reveal">
+        <div class="project-page-nav">
+          <a href="okkta.html">
+            ← <span data-i18n="cta.prevProject"></span> Oneum
+          </a>
+          <a href="elevateu.html">
+            <span data-i18n="cta.nextProject"></span> ElevateU →
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="container contact-section" id="contact">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <div class="contact-centered">
+        <h2 data-i18n="contact.title"></h2>
+        <p class="contact-invite" data-i18n="contact.invite"></p>
+
+        <div class="contact-icons">
+          <a href="mailto:TimurKhuzin92@gmail.com" class="contact-icon-btn" data-i18n-aria-label="contact.emailAria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+          <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.telegramAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+          </a>
+          <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.whatsappAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container">
+    <footer class="site-footer">
+      <p class="text-tertiary text-small">© 2026 Timur Khuzin</p>
+    </footer>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+
+      <a href="../index.html" class="mobile-menu-link" data-i18n="nav.home"></a>
+
+      <div class="mobile-menu-group">
+        <button type="button" class="mobile-menu-link mobile-menu-trigger" aria-expanded="false">
+          <span data-i18n="nav.projects"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-menu-caret">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-menu-sub">
+          <a href="ozon.html" data-i18n="nav.project.ozon"></a>
+          <a href="gitverse.html" data-i18n="nav.project.gitverse"></a>
+          <a href="okkta.html" data-i18n="nav.project.okkta"></a>
+          <a href="prokennex.html" data-i18n="nav.project.prokennex"></a>
+          <a href="elevateu.html" data-i18n="nav.project.elevateu"></a>
+        </div>
+      </div>
+
+      <a href="../about.html" class="mobile-menu-link" data-i18n="nav.about"></a>
+      <a href="../skills.html" class="mobile-menu-link" data-i18n="nav.skills"></a>
+      <a href="../index.html#contact" class="mobile-menu-link" data-i18n="nav.contacts"></a>
+
+      <div class="mobile-menu-footer">
+        <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+        </a>
+        <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+        </a>
+        <a href="mailto:TimurKhuzin92@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/i18n-prokennex.js"></script>
+  <script src="../js/i18n-common.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/cursor.js"></script>
+  <script src="../js/header-scroll.js"></script>
+  <script src="../js/nav-dropdown.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+  <script src="../js/back-to-top.js"></script>
+</body>
+</html>

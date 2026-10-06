@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oneum — B2B dashboard redesign · Timur Khuzin</title>
+  <meta name="description" content="Кейс: редизайн B2B-дашборда для AI чат-бота Oneum. Хакатон МегаХакатон 3.0, 2-е место.">
+
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+  <link rel="stylesheet" href="../css/reveal.css">
+</head>
+<body style="--scene-accent: #4ADE80;">
+
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <div class="site-header-wrap">
+    <div class="container">
+      <header class="site-header">
+        <a href="../index.html" class="logo">
+          <span class="logo-name">Timur Khuzin</span>
+          <span class="logo-role" data-i18n="logo.role"></span>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-dropdown">
+              <a href="../index.html#projects" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <span data-i18n="nav.projects"></span>
+                <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li style="--item-accent: #FF6B35;"><a href="ozon.html" data-i18n="nav.project.ozon"></a></li>
+                <li style="--item-accent: #4A9EFF;"><a href="gitverse.html" data-i18n="nav.project.gitverse"></a></li>
+                <li style="--item-accent: #4ADE80;"><a href="okkta.html" data-i18n="nav.project.okkta"></a></li>
+                <li style="--item-accent: #F5573B;"><a href="prokennex.html" data-i18n="nav.project.prokennex"></a></li>
+                <li style="--item-accent: #8B7CF6;"><a href="elevateu.html" data-i18n="nav.project.elevateu"></a></li>
+              </ul>
+            </li>
+            <li class="nav-dropdown">
+              <a href="../about.html" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <span data-i18n="nav.about"></span>
+                <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li style="--item-accent: #7C3AED;"><a href="../about.html" data-i18n="nav.about"></a></li>
+                <li style="--item-accent: #7C3AED;"><a href="../about.html#cv" data-i18n="nav.about.cv"></a></li>
+              </ul>
+            </li>
+            <li><a href="../skills.html" data-i18n="nav.skills"></a></li>
+            <li><a href="../index.html#contact" data-i18n="nav.contacts"></a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="nav-burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="header-controls">
+          <div class="control-group" role="group" data-i18n-aria-label="lang.toggle.label">
+            <button class="control-segment" data-lang-set="ru">RU</button>
+            <button class="control-segment" data-lang-set="en">EN</button>
+          </div>
+
+          <button class="theme-toggle" data-theme-toggle data-i18n-aria-label="theme.toggle.label">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <!-- ================= HERO ================= -->
+      <section class="project-page-hero">
+        <div class="project-hero-bg" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#4ADE80"/>
+            <path d="M14 20 L20 14 L26 20 L20 26 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+            <circle cx="20" cy="20" r="2.5" fill="white"/>
+          </svg>
+        </div>
+
+        <span class="project-page-tag" data-i18n="okkta.tag"></span>
+        <h1 data-i18n="okkta.title"></h1>
+        <p class="project-page-subtitle" data-i18n="okkta.subtitle"></p>
+      </section>
+
+      <!-- ================= META ================= -->
+      <div class="project-page-meta">
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.role"></p>
+          <p data-i18n="okkta.meta.role"></p>
+        </div>
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.duration"></p>
+          <p data-i18n="okkta.meta.duration"></p>
+        </div>
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.tools"></p>
+          <p data-i18n="okkta.meta.tools"></p>
+        </div>
+      </div>
+
+      <!-- ================= COVER ================= -->
+      <div class="project-page-cover reveal reveal-scale">
+        <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/01_Slide.jpg" alt="Oneum cover" loading="eager" style="object-position: center;">
+      </div>
+
+      <!-- ================= CONTEXT ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.context.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="okkta.context.p1"></p>
+        <p class="reveal" data-reveal-delay="250" data-i18n="okkta.context.p2"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/02_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= PAINS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.pains.title"></h2>
+        <div class="pains-grid">
+          <div class="pain-card reveal" data-reveal-delay="0">
+            <span class="pain-marker">☹︎ 1</span>
+            <p data-i18n="okkta.pains.1"></p>
+          </div>
+          <div class="pain-card reveal" data-reveal-delay="120">
+            <span class="pain-marker">☹︎ 2</span>
+            <p data-i18n="okkta.pains.2"></p>
+          </div>
+          <div class="pain-card reveal" data-reveal-delay="240">
+            <span class="pain-marker">☹︎ 3</span>
+            <p data-i18n="okkta.pains.3"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/05_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= TASK ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.task.title"></h2>
+        <div class="task-split">
+          <div class="task-half reveal" data-reveal-delay="100">
+            <p class="eyebrow" data-i18n="okkta.task.business.label"></p>
+            <p data-i18n="okkta.task.business"></p>
+          </div>
+          <div class="task-half reveal" data-reveal-delay="250">
+            <p class="eyebrow" data-i18n="okkta.task.user.label"></p>
+            <p data-i18n="okkta.task.user"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/03_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= PROCESS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.process.title"></h2>
+        <div class="process-grid">
+          <div class="process-card reveal" data-reveal-delay="0">
+            <span class="process-num">01</span>
+            <p data-i18n="okkta.process.i1"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="100">
+            <span class="process-num">02</span>
+            <p data-i18n="okkta.process.i2"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="200">
+            <span class="process-num">03</span>
+            <p data-i18n="okkta.process.i3"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="300">
+            <span class="process-num">04</span>
+            <p data-i18n="okkta.process.i4"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="400">
+            <span class="process-num">05</span>
+            <p data-i18n="okkta.process.i5"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/07_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= DESIGN — ключевые экраны ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.design.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="okkta.design.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/08_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.design.cap1"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/09_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.design.cap2"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/10_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.design.cap3"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/12_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.design.cap4"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/13_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.design.cap5"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/21_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.design.cap6"></figcaption>
+        </figure>
+      </section>
+
+      <!-- ================= BRANDING ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.branding.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="okkta.branding.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/14_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.branding.cap1"></figcaption>
+        </figure>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/15_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          <figcaption data-i18n="okkta.branding.cap2"></figcaption>
+        </figure>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/16_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          </figure>
+          <figure>
+            <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/19_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= MOBILE ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.mobile.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="okkta.mobile.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@main/Projects/04-HakatonOkkta/images/22_Slide.jpg" alt="" loading="lazy" style="object-position: center;">
+        </figure>
+      </section>
+
+      <!-- ================= RESULTS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.results.title"></h2>
+        <div class="project-page-results">
+          <div class="project-page-result reveal" data-reveal-delay="0">
+            <span class="stat stat--neutral">2</span>
+            <span class="stat-label" data-i18n="okkta.results.r1"></span>
+          </div>
+          <div class="project-page-result reveal" data-reveal-delay="120">
+            <span class="stat stat--neutral">~15</span>
+            <span class="stat-label" data-i18n="okkta.results.r2"></span>
+          </div>
+          <div class="project-page-result reveal" data-reveal-delay="240">
+            <span class="stat stat--neutral">6</span>
+            <span class="stat-label" data-i18n="okkta.results.r3"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= REFLECTION ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="okkta.reflection.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="okkta.reflection.p1"></p>
+        <p class="reveal" data-reveal-delay="250" data-i18n="okkta.reflection.p2"></p>
+      </section>
+
+      <!-- ================= LINKS ================= -->
+      <section class="project-page-section reveal">
+        <div class="project-page-links">
+          <a href="https://www.figma.com/design/H28naXsngriWjK3zJwXGuR/Oktta--%D0%BE%D0%B1%D1%89%D0%B8%D0%B9-?node-id=0-1&t=PhMgCgFubrJNmAFh-1" target="_blank" rel="noopener noreferrer" class="project-page-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+            <span data-i18n="cta.figma"></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= NAV ================= -->
+      <section class="project-page-section reveal">
+        <div class="project-page-nav">
+          <a href="gitverse.html">
+            ← <span data-i18n="cta.prevProject"></span> GitVerse
+          </a>
+          <a href="prokennex.html">
+            <span data-i18n="cta.nextProject"></span> Prokennex →
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="container contact-section" id="contact">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <div class="contact-centered">
+        <h2 data-i18n="contact.title"></h2>
+        <p class="contact-invite" data-i18n="contact.invite"></p>
+
+        <div class="contact-icons">
+          <a href="mailto:TimurKhuzin92@gmail.com" class="contact-icon-btn" data-i18n-aria-label="contact.emailAria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+          <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.telegramAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+          </a>
+          <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.whatsappAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container">
+    <footer class="site-footer">
+      <p class="text-tertiary text-small">© 2026 Timur Khuzin</p>
+    </footer>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+
+      <a href="../index.html" class="mobile-menu-link" data-i18n="nav.home"></a>
+
+      <div class="mobile-menu-group">
+        <button type="button" class="mobile-menu-link mobile-menu-trigger" aria-expanded="false">
+          <span data-i18n="nav.projects"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-menu-caret">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-menu-sub">
+          <a href="ozon.html" data-i18n="nav.project.ozon"></a>
+          <a href="gitverse.html" data-i18n="nav.project.gitverse"></a>
+          <a href="okkta.html" data-i18n="nav.project.okkta"></a>
+          <a href="prokennex.html" data-i18n="nav.project.prokennex"></a>
+          <a href="elevateu.html" data-i18n="nav.project.elevateu"></a>
+        </div>
+      </div>
+
+      <a href="../about.html" class="mobile-menu-link" data-i18n="nav.about"></a>
+      <a href="../skills.html" class="mobile-menu-link" data-i18n="nav.skills"></a>
+      <a href="../index.html#contact" class="mobile-menu-link" data-i18n="nav.contacts"></a>
+
+      <div class="mobile-menu-footer">
+        <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+        </a>
+        <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+        </a>
+        <a href="mailto:TimurKhuzin92@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/i18n-okkta.js"></script>
+  <script src="../js/i18n-common.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/cursor.js"></script>
+  <script src="../js/header-scroll.js"></script>
+  <script src="../js/nav-dropdown.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+  <script src="../js/back-to-top.js"></script>
+</body>
+</html>
