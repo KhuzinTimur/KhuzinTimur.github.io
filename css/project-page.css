@@ -191,23 +191,31 @@
   color: var(--text-primary);
   font-weight: 600;
   font-size: var(--fs-small);
+  overflow: hidden;
   transition:
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+    border-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-page-link:hover {
   border-color: var(--scene-accent, var(--accent));
   color: var(--scene-accent, var(--accent));
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow:
+    0 10px 28px color-mix(in srgb, var(--scene-accent, var(--accent)) 22%, transparent),
+    0 2px 8px color-mix(in srgb, var(--scene-accent, var(--accent)) 12%, transparent);
 }
 
 .project-page-link svg {
   width: 16px;
   height: 16px;
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-page-link:hover svg {
+  transform: translate(3px, -3px);
 }
 
 /* ---- Навигация по проектам внизу ---- */
@@ -228,11 +236,25 @@
   gap: var(--space-2);
   font-weight: 600;
   color: var(--text-secondary);
-  transition: color var(--transition-fast);
+  transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-page-nav a:hover {
   color: var(--scene-accent, var(--accent));
+}
+
+/* Стрелки ← и → внутри ссылок навигации двигаются при hover */
+.project-page-nav a span:first-child,
+.project-page-nav a:first-child {
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-page-nav a:first-child:hover {
+  transform: translateX(-4px);
+}
+
+.project-page-nav a:last-child:hover {
+  transform: translateX(4px);
 }
 
 @media (max-width: 720px) {

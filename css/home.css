@@ -841,6 +841,8 @@ ul.nav-dropdown-menu a:hover::after {
   line-height: 1;
   white-space: nowrap;
   transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color var(--transition-fast),
     background var(--transition-fast),
     color var(--transition-fast);
@@ -849,6 +851,8 @@ ul.nav-dropdown-menu a:hover::after {
 .skill-pill:hover {
   border-color: var(--accent);
   background: color-mix(in srgb, var(--accent) 14%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 /* Уважение к системной настройке «уменьшить движение» */
