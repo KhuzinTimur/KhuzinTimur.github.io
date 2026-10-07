@@ -333,16 +333,15 @@
   animation: hero-bg-pulse 8s ease-in-out infinite;
 }
 
-/* Размытый оранжевый фон внутри — края иконки растворяются в нём */
 .project-hero-bg::before {
   content: "";
   position: absolute;
   inset: -60%;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(255, 107, 53, 0.75) 0%,
-    rgba(255, 107, 53, 0.55) 35%,
-    rgba(255, 107, 53, 0.25) 65%,
+    color-mix(in srgb, var(--scene-accent, #FF6B35) 75%, transparent) 0%,
+    color-mix(in srgb, var(--scene-accent, #FF6B35) 55%, transparent) 35%,
+    color-mix(in srgb, var(--scene-accent, #FF6B35) 25%, transparent) 65%,
     transparent 100%
   );
 }
