@@ -800,8 +800,13 @@ ul.nav-dropdown-menu a:hover::after {
 .skills-marquee {
   position: relative;
   width: 100%;
+
+  /* Обрезаем ленту, но разрешаем теням пилюль выходить за границу */
   overflow: hidden;
-  padding-block: var(--space-2);
+  overflow: clip;
+  overflow-clip-margin: 30px;
+
+  padding-block: var(--space-4);
 
   /* Мягкое растворение пилюль по краям */
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
@@ -1554,5 +1559,65 @@ body.menu-open {
 
   .skills-marquee {
     margin-top: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   Стрелка-CTA под «ПОРТФОЛИО» — «проталкивает» к первой сцене проектов
+   ========================================================================== */
+
+.hero-scroll-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(0.75rem, 1.5vh, 1.25rem);
+}
+
+.hero-scroll-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+          backdrop-filter: blur(12px) saturate(140%);
+  transition:
+    color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-arrow-bounce 2.4s ease-in-out infinite;
+}
+
+.hero-scroll-cta svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-scroll-cta:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow:
+    0 10px 28px color-mix(in srgb, var(--accent) 25%, transparent),
+    0 2px 8px color-mix(in srgb, var(--accent) 15%, transparent);
+  animation-play-state: paused;
+}
+
+.hero-scroll-cta:active {
+  transform: scale(0.94);
+}
+
+/* Лёгкое «подпрыгивание» вниз — привлекает внимание */
+@keyframes hero-arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cta {
+    animation: none;
   }
 }
