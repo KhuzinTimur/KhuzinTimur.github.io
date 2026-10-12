@@ -8,7 +8,6 @@ window.I18N_COMMON = {
   ru: {
     'nav.home': 'Главная',
     'nav.about': 'О себе',
-    'nav.about.cv': 'Резюме',
     'nav.experience': 'Опыт',
     'nav.projects': 'Проекты',
     'nav.project.ozon': 'Ozon',
@@ -25,14 +24,9 @@ window.I18N_COMMON = {
     'lang.ru': 'RU',
     'lang.en': 'EN',
 
-    'footer.rights': 'Все проекты — учебные и проектные работы, если не указано иное.',
-    'footer.madeWith': 'Сделано на чистом HTML/CSS/JS',
-
-    'cta.viewCase': 'Смотреть кейс',
     'cta.figma': 'Открыть в Figma',
     'cta.behance': 'Открыть на Behance',
     'cta.backToProjects': '← Все проекты',
-    'cta.contactMe': 'Связаться',
 
     'contact.title': 'Let\u2019s connect',
     'contact.invite': 'Пишите, если есть предложение или просто хочется поздороваться 👋',
@@ -50,7 +44,6 @@ window.I18N_COMMON = {
   en: {
     'nav.home': 'Home',
     'nav.about': 'About',
-    'nav.about.cv': 'CV',
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.project.ozon': 'Ozon',
@@ -67,14 +60,9 @@ window.I18N_COMMON = {
     'lang.ru': 'RU',
     'lang.en': 'EN',
 
-    'footer.rights': 'All projects are academic / training work unless stated otherwise.',
-    'footer.madeWith': 'Built with plain HTML/CSS/JS',
-
-    'cta.viewCase': 'View case study',
     'cta.figma': 'Open in Figma',
     'cta.behance': 'Open on Behance',
     'cta.backToProjects': '← All projects',
-    'cta.contactMe': 'Get in touch',
 
     'contact.title': 'Let\u2019s connect',
     'contact.invite': 'Get in touch for opportunities or just to say hi! 👋',

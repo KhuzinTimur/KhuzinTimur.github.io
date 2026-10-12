@@ -614,19 +614,65 @@
   margin-top: var(--space-12);
   display: flex;
   flex-direction: column;
+  position: relative;
+  padding-left: 40px; /* место под линию таймлайна */
+}
+
+/* Вертикальная линия таймлайна — одна на всю секцию */
+.story-rows::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
 }
 
 .story-row {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(220px, 320px) 1fr;
   gap: var(--space-12);
   padding-block: var(--space-12);
-  border-top: 1px solid var(--border);
 }
 
+/* Чётные главы зеркальные — заголовок уезжает вправо, тело влево */
+.story-row:nth-child(even) {
+  grid-template-columns: 1fr minmax(220px, 320px);
+}
+
+.story-row:nth-child(even) .story-row-title {
+  order: 2;
+  text-align: right;
+}
+
+.story-row:nth-child(even) .story-row-body {
+  order: 1;
+}
+
+/* Точка на линии — по одной на каждую главу */
+.story-row::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: calc(var(--space-12) + 10px); /* выравниваем по первой строке заголовка */
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+  z-index: 1;
+}
+
+.story-row:first-child::before {
+  top: 10px;
+}
+
+/* Убираем верхние разделители — их заменяет линия таймлайна */
+.story-row,
 .story-row:first-child {
   border-top: none;
-  padding-top: 0;
 }
 
 .story-row-title {
@@ -637,6 +683,11 @@
   letter-spacing: -0.01em;
   font-weight: 400;
   color: var(--text-primary);
+
+  /* Заголовок «прилипает» к верху экрана при скролле */
+  position: sticky;
+  top: 100px; /* чуть ниже хедера, чтобы не перекрывался */
+  align-self: start; /* важно для sticky внутри grid */
 }
 
 .story-row-body {
@@ -655,11 +706,38 @@
 }
 
 @media (max-width: 720px) {
-  .story-row {
+  .story-rows {
+    padding-left: 0;
+  }
+
+  /* Скрываем линию и точки на мобилке */
+  .story-rows::before,
+  .story-row::before {
+    display: none;
+  }
+
+    .story-row,
+  .story-row:nth-child(even) {
     grid-template-columns: 1fr;
     gap: var(--space-4);
     padding-block: var(--space-8);
   }
+
+  /* Зигзаг на мобилке отключаем — всё в одну колонку */
+  .story-row:nth-child(even) .story-row-title {
+    order: 0;
+    text-align: left;
+  }
+
+  .story-row:nth-child(even) .story-row-body {
+    order: 0;
+  }
+
+  /* На мобилке sticky отключаем — там всё в одну колонку */
+  .story-row-title {
+    position: static;
+  }
+
   .story-row-body p {
     font-size: var(--fs-body);
     line-height: 1.7;

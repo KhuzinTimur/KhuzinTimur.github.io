@@ -959,8 +959,12 @@
   max-height: 620px;
   object-fit: cover;
   object-position: center top;
-  cursor: zoom-in;
   transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 420ms ease;
+}
+
+/* Zoom-курсор и hover-эффект — только когда картинка кликабельна (обёрнута в <a>) */
+.project-page-figure--pair a img {
+  cursor: zoom-in;
 }
 
 .project-page-figure--pair a:hover img {
