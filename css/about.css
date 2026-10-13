@@ -1179,3 +1179,90 @@
     min-width: 200px;
   }
 }
+
+/* ==========================================================================
+   Вне работы — двухрядная бесконечная карусель фото
+   Верхний ряд едет влево, нижний вправо. Бесшовно (дублирование группы).
+   ========================================================================== */
+
+.story-marquee {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow: hidden;
+  /* width и margin-left задаёт js/story-marquee.js — точно по viewport */
+}
+
+.story-marquee-row {
+  overflow: hidden;
+  width: 100%;
+}
+
+.story-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.story-marquee-group {
+  display: flex;
+  gap: var(--space-4);
+  padding-right: var(--space-4);
+  flex-shrink: 0;
+}
+
+.story-marquee-group img {
+  width: 640px;
+  height: 440px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+  flex-shrink: 0;
+  background: var(--bg-subtle);
+}
+
+/* Верхний ряд — едет влево */
+.story-marquee-row--top .story-marquee-track {
+  animation: story-marquee-left 50s linear infinite;
+}
+
+/* Нижний ряд — едет вправо */
+.story-marquee-row--bottom .story-marquee-track {
+  animation: story-marquee-right 50s linear infinite;
+}
+
+@keyframes story-marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes story-marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Мобилка: фото меньше, чтобы палец успевал «поймать» */
+@media (max-width: 720px) {
+  .story-marquee-group img {
+    width: 400px;
+    height: 280px;
+  }
+
+  .story-marquee-row--top .story-marquee-track,
+  .story-marquee-row--bottom .story-marquee-track {
+    animation-duration: 35s;
+  }
+}
+
+/* Prefers-reduced-motion: останавливаем карусель, скролл вручную */
+@media (prefers-reduced-motion: reduce) {
+  .story-marquee-row--top .story-marquee-track,
+  .story-marquee-row--bottom .story-marquee-track {
+    animation: none;
+  }
+
+  .story-marquee-row {
+    overflow-x: auto;
+  }
+}
